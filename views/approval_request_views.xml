@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Inherit the existing Approval Request form view -->
+    <record id="view_approval_request_form_inherit_dept" model="ir.ui.view">
+        <field name="name">approval.request.form.inherit.dept</field>
+        <field name="model">approval.request</field>
+        <!-- Reference the base Approval Request form view -->
+        <field name="inherit_id" ref="approvals.approval_request_view_form"/>
+
+        <field name="arch" type="xml">
+            <!-- Choose a location inside the existing form -->
+            <xpath expr="//sheet//group" position="after">
+                <group string="Department Approvals">
+                    <field name="approved_departments" widget="many2many_tags" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
